@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta-RC | 誠実な論理で、2億円の未来を設計する</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent: #d4af37; /* 誠実なゴールド */
+            --text: #ffffff;
+            --sub: #999999;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text);
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute; top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: -2; filter: brightness(0.4);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 100; letter-spacing: 0.3em;
+            margin-bottom: 20px; text-shadow: 0 0 20px rgba(0,0,0,1);
+        }
+
+        .profit-badge {
+            font-size: 1.5rem; color: var(--accent);
+            border: 1px solid var(--accent); padding: 10px 30px;
+            letter-spacing: 0.2em; margin-bottom: 40px;
+        }
+
+        /* Section Layout */
+        .container { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-size: 2.2rem; font-weight: 200; color: var(--accent); letter-spacing: 0.2em; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .card { background: var(--glass); padding: 50px 40px; border-top: 1px solid var(--accent); transition: 0.4s; }
+        .card:hover { background: rgba(212, 175, 55, 0.08); }
+        .card h3 { color: var(--accent); font-size: 1.3rem; margin-bottom: 20px; font-weight: 400; }
+
+        /* Spec Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 40px; color: var(--sub); font-size: 0.9rem; }
+        table th, table td { padding: 15px; border-bottom: 1px solid #222; text-align: left; }
+        table th { color: var(--accent); font-weight: 400; }
+
+        /* Video Box */
+        .video-box { width: 100%; max-width: 800px; margin: 60px auto; border: 1px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+
+        /* 40% Logic Chart */
+        .chart-box { background: rgba(212, 175, 55, 0.05); padding: 40px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); margin-top: 40px; }
+        .logic-row { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+
+        /* CTA */
+        .cta { text-align: center; padding: 100px 20px; background: #080808; }
+        .cta-btn { display: inline-block; padding: 20px 60px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; letter-spacing: 0.2em; transition: 0.4s; }
+        .cta-btn:hover { background: var(--accent); color: #000; }
+
+        footer { padding: 40px; text-align: center; color: #333; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://storage.googleapis.com/veo-public-assets/handshake_sincere.mp4" type="video/mp4">
+        </video>
+        <h1>約束は、設計図より重い。</h1>
+        <div class="profit-badge">想定純利益 2億円</div>
+        <p style="color: var(--sub); max-width: 700px;">
+            私たちは「10m制限」という物理的制約の中で、<br>
+            地主様、建設会社、クリエイターが「三方よしの笑顔」になれる唯一の解を提示します。
+        </p>
+    </section>
+
+    <section class="container">
+        <div class="section-title">
+            <h2>建設営業を「科学」し、成約を自動化する。</h2>
+            <p style="color: var(--sub);">論理的シミュレーションがあなたをトップセールスへ導きます。</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>即時・非対面解析</h3>
+                <p>住所入力から数秒で、解体費用から収益最大化ボリュームまで算出。現地調査を待つ時間は、もう誠実さの欠如でしかありません。</p>
+            </div>
+            <div class="card">
+                <h3>B1(夢の地下空間) + 4F</h3>
+                <p>高度規制10m下で容積不算入を最大活用。地下3mの天井高を確保した「没入型Music LABO」が、圧倒的な賃料価値を生み出します。</p>
+            </div>
+            <div class="card">
+                <h3>純利益 2億円の約束</h3>
+                <p>経費40%を事前控除した残りの60%からローン返済を自動執行し、オーナー様の口座に残る「真実の利益」を可視化します。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="background: #080808; border-radius: 10px;">
+        <div class="section-title">
+            <h2>The "Truth" of 40% Safety Buffer</h2>
+            <p style="color: var(--sub);">建物を35年後も「新品」に保つ、揺るぎない絶対的根拠。</p>
+        </div>
+        <div class="chart-box">
+            <div class="logic-row"><span style="color: var(--accent); font-size: 1.2rem;">清掃費 (美観維持の徹底)</span><span style="color: var(--accent); font-size: 1.2rem; font-weight: bold;">20%</span></div>
+            <div class="logic-row"><span>修繕積立金</span><span>10%</span></div>
+            <div class="logic-row"><span>管理費 (煩わしさの排除)</span><span>5%</span></div>
+            <div class="logic-row"><span>Meta-RC システム保守</span><span>5%</span></div>
+            <div style="text-align: center; margin-top: 30px;">
+                <h3 style="color: #fff; font-weight: 400;">合計 40% を完全控除。残り 60% が一本道の幹。</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="section-title">
+            <h2>Meta-RC 独自の解析エンジン：標準仕様</h2>
+        </div>
+        <table>
+            <tr><th>項目</th><th>Meta-RC 標準スペック</th></tr>
+            <tr><td>高度制限</td><td>10m制限遵守 (最高高さ 9.850m) 機能的スクエア設計</td></tr>
+            <tr><td>地下階 (B1)</td><td>天井高 CH 3,000mm / 三面LEDウォール / 完全防音</td></tr>
+            <tr><td>地上階 (1F-4F)</td><td>天井高 CH 2,100mm / 1部屋20㎡以下収益最大化</td></tr>
+            <tr><td>外装・共用部</td><td>接道側オール鏡張り / 鏡面ステン庇 / EV出入口「かりん」90幅乱張り</td></tr>
+            <tr><td>室内設備</td><td>1m高カウンター収納 / 高さ30cm小上がり収納（畳が丘）標準装備</td></tr>
+            <tr><td>現場監理</td><td>ARグラスによる常時リアルタイム監査システム</td></tr>
+            <tr><td>防水・構造</td><td>ポリウレア吹付防水 / 高耐久RC造フラットルーフ</td></tr>
+        </table>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>透明性の高いパートナーシップ。</h2>
+            <p style="margin-bottom: 50px;">成功お礼金：不動産 10% | 建設 30% | Meta-RC 10%<br>誠実な配分が、三方よしの笑顔を永続させます。</p>
+            
+            <a href="https://f3s.streamlit.app" class="cta-btn">無料解析エンジンを起動する</a>
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>日本時間 2026.05.12 | Meta-RC-Estimator | Developed by Ejipe & AGP</p>
+        <p>&copy; 2026 Meta-RC 独自の解析エンジン. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
