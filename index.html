@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta-RC | 日本の才能を解き放ち、家族の命を守り抜く 2通りの提案</title>
+    <title>Meta-RC | 日本の才能を解き放ち、家族の命を守り抜く</title>
     <style>
         :root {
             --bg-color: #050505;
             --accent: #d4af37; /* 誠実なゴールド */
             --text: #ffffff;
             --sub: #999999;
-            --glass: rgba(255, 255, 255, 0.03);
             --card-bg: rgba(255, 255, 255, 0.05);
         }
 
@@ -19,7 +18,7 @@
             background-color: var(--bg-color);
             color: var(--text);
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             scroll-behavior: smooth;
         }
 
@@ -30,174 +29,146 @@
             text-align: center; overflow: hidden;
         }
 
-        .hero-bg {
+        .hero-video-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631');
-            background-size: cover; background-position: center; z-index: -1;
+            z-index: -1; object-fit: cover; opacity: 0.4;
         }
 
         .hero h1 {
             font-size: 3.5rem; font-weight: 100; letter-spacing: 0.3em;
-            margin-bottom: 20px;
+            margin-bottom: 20px; text-shadow: 0 0 20px rgba(0,0,0,1);
         }
 
         .brand-statement {
             font-size: 1.2rem; color: var(--accent);
             border: 1px solid var(--accent); padding: 10px 30px;
             letter-spacing: 0.2em; margin-bottom: 40px;
+            background: rgba(0,0,0,0.5);
         }
 
-        /* Container & Grid */
-        .container { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 200; color: var(--accent); letter-spacing: 0.1em; }
+        .container { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        
+        /* Visual Section */
+        .visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 60px 0; }
+        .visual-item { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid #333; }
+        .visual-item img { width: 100%; height: 500px; object-fit: cover; transition: 0.5s; }
+        .visual-item:hover img { transform: scale(1.05); }
+        .visual-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 40px 20px;
+        }
 
-        .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .pillar-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid rgba(212,175,55,0.1); transition: 0.3s; }
-        .pillar-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .pillar-img { width: 100%; height: 300px; object-fit: cover; }
-        .pillar-content { padding: 30px; }
-        .pillar-content h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; font-weight: 400; }
-        .pillar-content ul { padding-left: 20px; color: #ccc; }
-        .pillar-content li { margin-bottom: 10px; }
+        /* VR Movie Section */
+        .vr-movie-section {
+            background: #111; padding: 100px 20px; text-align: center;
+            border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent);
+        }
+        .video-container {
+            max-width: 1000px; margin: 40px auto; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 0 50px rgba(212,175,55,0.2); border: 1px solid #333;
+        }
+        .video-container img { width: 100%; display: block; }
 
-        /* Premium Section */
-        .premium-box { background: linear-gradient(135deg, #111, #000); border: 1px solid var(--accent); border-radius: 20px; padding: 60px; display: flex; gap: 40px; align-items: center; }
-        .premium-text { flex: 1; }
-        .premium-img { flex: 1; border-radius: 10px; overflow: hidden; border: 1px solid #333; }
-        .premium-img img { width: 100%; display: block; }
+        /* Roadmap */
+        .roadmap { display: flex; justify-content: space-between; margin-top: 60px; gap: 20px; }
+        .step { flex: 1; background: var(--card-bg); padding: 30px; border-radius: 15px; border-top: 3px solid var(--accent); }
+        .step h4 { color: var(--accent); margin-top: 0; }
 
-        /* CTA: 洗練された角丸（ピル形状）ボタン */
-        .cta { text-align: center; padding: 100px 20px; }
+        /* CTA Button */
         .cta-btn { 
-            display: inline-block; 
-            padding: 20px 60px; 
-            border: 1px solid var(--accent); 
-            border-radius: 50px; 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 1.2rem; 
-            letter-spacing: 0.1em; 
-            font-weight: bold; 
-            transition: 0.4s; 
+            display: inline-block; padding: 22px 80px; 
+            border: 1px solid var(--accent); border-radius: 50px; 
+            color: var(--accent); text-decoration: none; 
+            font-size: 1.3rem; font-weight: bold; transition: 0.4s;
             background: rgba(212,175,55,0.05);
         }
         .cta-btn:hover { 
-            background: var(--accent); 
-            color: #000; 
-            box-shadow: 0 0 25px rgba(212,175,55,0.4); 
-            transform: scale(1.02); 
+            background: var(--accent); color: #000; 
+            box-shadow: 0 0 30px rgba(212,175,55,0.5); 
         }
 
-        /* Tables */
-        table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-        th, td { padding: 18px; border-bottom: 1px solid #222; text-align: left; font-size: 0.9rem; }
-        th { color: var(--accent); font-weight: 400; width: 30%; }
-
         @media (max-width: 768px) {
-            .pillar-grid, .premium-box { grid-template-columns: 1fr; flex-direction: column; }
+            .visual-grid, .roadmap { grid-template-columns: 1fr; flex-direction: column; }
             .hero h1 { font-size: 2rem; }
-            .cta-btn { width: 80%; padding: 18px 0; font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="hero-bg"></div>
+        <img src="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" class="hero-video-bg" alt="Music LABO">
         <h1>その投資は、命を救うか。</h1>
-        <div class="brand-statement">Meta-RC 独自の 2通りの提案</div>
+        <div class="brand-statement">三方よしの笑顔を、デジタルで証明する</div>
         <p style="color: var(--sub); max-width: 800px;">
-            私たちは、土地の収益価値を最大化する建築と、<br>家族の未来を絶対的に守り抜くシェルター、2通りの正解を提示します。
+            私たちは、土地の収益価値を最大化する建築と、家族の未来を絶対的に守り抜くシェルター、<br>
+            そしてクリエイターの才能を爆発させる「没入空間」を一つにします。
         </p>
     </section>
 
     <section class="container">
-        <div class="section-title">
-            <h2>地主様への 2通りの圧倒的メリット</h2>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 2.5rem; color: var(--accent); font-weight: 200;">THE ARCHITECTURE</h2>
         </div>
-        <div class="pillar-grid">
-            <div class="pillar-card">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/11730492072617491075" class="pillar-img" alt="内観イメージ">
-                <div class="pillar-content">
-                    <h3>Creator's Blue Ocean</h3>
-                    <p style="color: var(--accent);">「貸す」のではなく「選ばれる」建築へ</p>
-                    <ul>
-                        <li><strong>圧倒的な空間価値：</strong> 地下3mの天井高が生み出す没入型Music LABO。</li>
-                        <li><strong>高収益の追求：</strong> 高度規制10m下で容積不算入を最大活用（B1+4F）。</li>
-                        <li><strong>差別化の極致：</strong> クリエイターが集う聖地として、周辺相場を超越。</li>
-                        <li><strong>生活の工夫：</strong> 小上がり収納「畳が丘」を標準装備し、20㎡以下でも快適な居住空間を実現。</li>
-                    </ul>
+        
+        <div class="visual-grid">
+            <div class="visual-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11730492072617491075" alt="RC Exterior">
+                <div class="visual-overlay">
+                    <h3 style="color: var(--accent);">B1 + 4F / 10m Limit Compliance</h3>
+                    <p style="font-size: 0.9rem;">高度規制を逆手に取った、容積不算入の最大活用モデル。</p>
                 </div>
             </div>
-            <div class="pillar-card">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/9837595675228178298" class="pillar-img" alt="シェルターイメージ">
-                <div class="pillar-content">
-                    <h3>Pyramid Shelter</h3>
-                    <p style="color: var(--accent);">家族の命とライフラインを死守する</p>
-                    <ul>
-                        <li><strong>ライフライン自給：</strong> 屋上フラットルーフ＋自家発電で有事も電力を確保。</li>
-                        <li><strong>絶対的な堅牢性：</strong> 強固なRC造によるピラミッドシェルターが家族を守る。</li>
-                        <li><strong>災害大国の正解：</strong> 地震による寸断から家族を孤立させない最後の砦。</li>
-                        <li><strong>誠実な適合：</strong> 建築基準法を遵守し、物理的な安心を数値で証明。</li>
-                    </ul>
+            <div class="visual-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/9837595675228178298" alt="Pyramid Shelter">
+                <div class="visual-overlay">
+                    <h3 style="color: var(--accent);">RC Pyramid Shelter</h3>
+                    <p style="font-size: 0.9rem;">屋上フラットルーフと堅牢なRC構造が、家族の命と電力を死守する。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container" style="background: #000;">
-        <div class="section-title">
-            <h2 style="font-size: 2rem;">Meta-RC Genesis Premium</h2>
-            <p style="color: var(--accent);">建設会社の営業マンを「最強」にするデジタル武装</p>
-        </div>
-        <div class="premium-box">
-            <div class="premium-text">
-                <h3 style="color: #fff; font-weight: 300;">現場管理を「手のひら」へ、成約を「その場」で。</h3>
-                <p style="color: #ccc; font-size: 0.95rem;">
-                    Premiumコースが実現するのは、営業マンの時間を奪う「確認作業」の完全自動化です。
-                </p>
-                <ul style="color: #bbb; font-size: 0.9rem; line-height: 2;">
-                    <li><strong>ARグラス遠隔管理：</strong> 現場へ行かずとも、ARでリアルタイム監査と指導。</li>
-                    <li><strong>自動工程管理：</strong> BIMデータと連動し、現場進捗をデジタルツインで把握。</li>
-                    <li><strong>自動発注・回答催促：</strong> 滞りがちな資材発注や職人への連絡をAIが自動追従。</li>
-                    <li><strong>即時見積もり：</strong> 地主様の前で、その場で正確なシミュレーションを提示。</li>
-                </ul>
-                <p style="margin-top: 20px; color: var(--accent); font-weight: bold;">「待たせる営業」から「解決するパートナー」へ。</p>
-            </div>
-            <div class="premium-img">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/7627347328528959110" alt="管理システムイメージ">
+    <section class="vr-movie-section">
+        <div class="container">
+            <h2 style="color: var(--accent); font-weight: 200;">VR IMMERSION EXPERIENCE</h2>
+            <p>設計図面が「現実」に変わる瞬間を。AGPがナビゲートする没入空間体験。</p>
+            <div class="video-container">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" alt="VR Movie Demo">
+                <div style="padding: 20px; background: #000; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.2em;">
+                    ▶︎ VR没入体験デモ・シミュレーター起動
+                </div>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <div class="section-title">
-            <h2>Meta-RC 物理的スペック詳細</h2>
-        </div>
-        <table>
-            <tr><th>高度制限適合</th><td>10m制限遵守 (最高高さ 9.850m) 機能的スクエア設計</td></tr>
-            <tr><td>地下階 (B1)</td><td>天井高 CH 3,000mm / 三面LEDウォール / 完全防音</td></tr>
-            <tr><td>Premium管理</td><td>ARグラス常時監査 / 自動工程管理 / AI回答催促システム</td></tr>
-            <tr><td>外装・意匠</td><td>接道側オール鏡張り / 鏡面ステン庇 / 鏡面オートロック</td></tr>
-            <tr><td>誠実な適合</td><td>建築基準法を遵守し、物理的な安心を数値で証明。</td></tr>
-            <tr><td>災害対策</td><td>RC造ピラミッドシェルター / 自家発電 / 高耐久ポリウレア防水</td></tr>
-        </table>
-    </section>
-
-    <section class="cta">
-        <div class="container">
-            <h2>土地と命の最適解を、今。</h2>
-            <p style="margin-bottom: 50px; color: var(--sub);">
-                住所入力から始まる、全自動の論理的シミュレーション。
-            </p>
-            
-            <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">(無料見積もりを体験する)</a>
+        <div style="text-align: center;">
+            <h2 style="font-size: 2rem; color: var(--accent); font-weight: 200;">ROADMAP TO GENESIS</h2>
+            <div class="roadmap">
+                <div class="step">
+                    <h4>01. Pulse</h4>
+                    <p style="font-size: 0.8rem; color: var(--sub);">住所入力と同時にAI解析を実行。パルスプラン入会で詳細図面と権利を取得します。</p>
+                </div>
+                <div class="step">
+                    <h4>02. Financing</h4>
+                    <p style="font-size: 0.8rem; color: var(--sub);">金融機関との交渉。誠実な適合データにより、融資の壁を圧倒的な速度で突破します。</p>
+                </div>
+                <div class="step">
+                    <h4>03. Contract</h4>
+                    <p style="font-size: 0.8rem; color: var(--sub);">施工会社決定後、AIパルス立ち会いのもと本契約を執行。デジタル契約書を即時交付します。</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>日本時間 2026.05.13 | Meta-RC-Estimator | Developed by Ejipe & AGP</p>
+    <section class="container" style="text-align: center; padding-top: 0;">
+        <h2 style="margin-bottom: 40px; font-weight: 200;">土地と命の最適解を、今。</h2>
+        <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">(無料見積もりを体験する)</a>
+    </section>
+
+    <footer style="padding: 60px 20px; border-top: 1px solid #222; text-align: center; color: #444; font-size: 0.8rem;">
+        <p>日本時間 2026.05.13 | Meta-RC Project Management by AGP</p>
     </footer>
 
 </body>
