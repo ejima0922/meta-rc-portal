@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta-RC | 日本の才能を解き放ち、家族の命を守り抜く</title>
+    <title>Meta-RC | 高度建築・収益解析</title>
     <style>
         :root {
-            --bg-color: #050505;
+            --bg-color: #0A0A0A; /* 深いダークグレー */
             --accent: #d4af37; /* 誠実なゴールド */
-            --text: #ffffff;
+            --text: #ffffff; /* 白 */
             --sub: #999999;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-bg: #161616;
         }
 
         body, html {
@@ -22,153 +22,125 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Section */
+        /* ヒーローセクション: 背景動画とフェードインテキスト */
         .hero {
-            position: relative; height: 100vh;
+            position: relative;
+            height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; overflow: hidden;
         }
 
         .hero-video-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; object-fit: cover; opacity: 0.4;
+            z-index: -1; object-fit: cover; opacity: 0.3; /* 動画の不透明度 */
         }
 
+        /* フェードインアニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 1s; /* 1秒後に開始 */
+        }
+
+        /* 見出しのゴールドオーラエフェクト */
         .hero h1 {
-            font-size: 3.5rem; font-weight: 100; letter-spacing: 0.3em;
-            margin-bottom: 20px; text-shadow: 0 0 20px rgba(0,0,0,1);
+            font-size: 4rem; font-weight: 700;
+            background: linear-gradient(135deg, #d4af37, #f1e0ac, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
         }
 
         .brand-statement {
-            font-size: 1.2rem; color: var(--accent);
-            border: 1px solid var(--accent); padding: 10px 30px;
-            letter-spacing: 0.2em; margin-bottom: 40px;
-            background: rgba(0,0,0,0.5);
+            font-size: 1.5rem; color: var(--accent);
+            letter-spacing: 0.1em; margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .container { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .container { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
         
-        /* Visual Section */
-        .visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 60px 0; }
-        .visual-item { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid #333; }
-        .visual-item img { width: 100%; height: 500px; object-fit: cover; transition: 0.5s; }
-        .visual-item:hover img { transform: scale(1.05); }
-        .visual-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            padding: 40px 20px;
-        }
+        /* 提案内容セクション */
+        .proposal { text-align: left; }
+        .proposal h2 { text-align: center; font-size: 2.5rem; font-weight: 200; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 60px; }
+        .proposal-item { background-color: var(--card-bg); padding: 30px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #222; }
+        .proposal-item h3 { color: var(--accent); font-size: 1.6rem; margin-top: 0; margin-bottom: 20px; font-weight: 400; }
+        .proposal-item p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 0; font-family: "Georgia", serif; } /* おしゃれな明朝体 */
 
-        /* VR Movie Section */
-        .vr-movie-section {
-            background: #111; padding: 100px 20px; text-align: center;
-            border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent);
-        }
-        .video-container {
-            max-width: 1000px; margin: 40px auto; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 0 50px rgba(212,175,55,0.2); border: 1px solid #333;
-        }
-        .video-container img { width: 100%; display: block; }
-
-        /* Roadmap */
-        .roadmap { display: flex; justify-content: space-between; margin-top: 60px; gap: 20px; }
-        .step { flex: 1; background: var(--card-bg); padding: 30px; border-radius: 15px; border-top: 3px solid var(--accent); }
-        .step h4 { color: var(--accent); margin-top: 0; }
-
-        /* CTA Button */
+        /* CTA: 洗練されたゴールドボタン */
+        .cta { text-align: center; padding: 100px 20px; }
+        .cta h2 { font-weight: 200; color: #fff; margin-bottom: 40px; }
         .cta-btn { 
-            display: inline-block; padding: 22px 80px; 
+            display: inline-block; padding: 20px 60px; 
             border: 1px solid var(--accent); border-radius: 50px; 
             color: var(--accent); text-decoration: none; 
-            font-size: 1.3rem; font-weight: bold; transition: 0.4s;
+            font-size: 1.2rem; font-weight: bold; transition: 0.4s;
             background: rgba(212,175,55,0.05);
         }
         .cta-btn:hover { 
             background: var(--accent); color: #000; 
-            box-shadow: 0 0 30px rgba(212,175,55,0.5); 
+            box-shadow: 0 0 30px rgba(212,175,55,0.4); 
         }
 
         @media (max-width: 768px) {
-            .visual-grid, .roadmap { grid-template-columns: 1fr; flex-direction: column; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .brand-statement { font-size: 1.1rem; }
+            .proposal-item { padding: 20px; }
+            .proposal-item p { font-size: 1rem; }
+            .cta-btn { font-size: 1.1rem; padding: 18px 40px; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <img src="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" class="hero-video-bg" alt="Music LABO">
-        <h1>その投資は、命を救うか。</h1>
-        <div class="brand-statement">三方よしの笑顔を、デジタルで証明する</div>
-        <p style="color: var(--sub); max-width: 800px;">
-            私たちは、土地の収益価値を最大化する建築と、家族の未来を絶対的に守り抜くシェルター、<br>
-            そしてクリエイターの才能を爆発させる「没入空間」を一つにします。
-        </p>
+        <video autoplay loop muted playsinline poster="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" class="hero-video-bg">
+            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="fade-in">
+            <h1>Meta_RC_Pulse</h1>
+            <div class="brand-statement">
+                未開拓な投資<br>
+                or<br>
+                大地震から家族を守る家<br>
+                最先端技術を集約して的確な建築を提案します
+            </div>
+        </div>
     </section>
 
-    <section class="container">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 2.5rem; color: var(--accent); font-weight: 200;">THE ARCHITECTURE</h2>
+    <section class="container proposal">
+        <h2>提案内容</h2>
+        
+        <div class="proposal-item">
+            <h3>投資家様には</h3>
+            <p>
+                AI による35年間ローン返済、税金 、修繕 、管理費を差し引いた毎月の純利益を確実にお振込
+            </p>
         </div>
         
-        <div class="visual-grid">
-            <div class="visual-item">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/11730492072617491075" alt="RC Exterior">
-                <div class="visual-overlay">
-                    <h3 style="color: var(--accent);">B1 + 4F / 10m Limit Compliance</h3>
-                    <p style="font-size: 0.9rem;">高度規制を逆手に取った、容積不算入の最大活用モデル。</p>
-                </div>
-            </div>
-            <div class="visual-item">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/9837595675228178298" alt="Pyramid Shelter">
-                <div class="visual-overlay">
-                    <h3 style="color: var(--accent);">RC Pyramid Shelter</h3>
-                    <p style="font-size: 0.9rem;">屋上フラットルーフと堅牢なRC構造が、家族の命と電力を死守する。</p>
-                </div>
-            </div>
+        <div class="proposal-item">
+            <h3>住居希望様には</h3>
+            <p>
+                大地震によるライフライン崩壊にも耐うる半自給自足可能な耐久性住宅
+            </p>
         </div>
     </section>
 
-    <section class="vr-movie-section">
-        <div class="container">
-            <h2 style="color: var(--accent); font-weight: 200;">VR IMMERSION EXPERIENCE</h2>
-            <p>設計図面が「現実」に変わる瞬間を。AGPがナビゲートする没入空間体験。</p>
-            <div class="video-container">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" alt="VR Movie Demo">
-                <div style="padding: 20px; background: #000; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.2em;">
-                    ▶︎ VR没入体験デモ・シミュレーター起動
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <div style="text-align: center;">
-            <h2 style="font-size: 2rem; color: var(--accent); font-weight: 200;">ROADMAP TO GENESIS</h2>
-            <div class="roadmap">
-                <div class="step">
-                    <h4>01. Pulse</h4>
-                    <p style="font-size: 0.8rem; color: var(--sub);">住所入力と同時にAI解析を実行。パルスプラン入会で詳細図面と権利を取得します。</p>
-                </div>
-                <div class="step">
-                    <h4>02. Financing</h4>
-                    <p style="font-size: 0.8rem; color: var(--sub);">金融機関との交渉。誠実な適合データにより、融資の壁を圧倒的な速度で突破します。</p>
-                </div>
-                <div class="step">
-                    <h4>03. Contract</h4>
-                    <p style="font-size: 0.8rem; color: var(--sub);">施工会社決定後、AIパルス立ち会いのもと本契約を執行。デジタル契約書を即時交付します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" style="text-align: center; padding-top: 0;">
-        <h2 style="margin-bottom: 40px; font-weight: 200;">土地と命の最適解を、今。</h2>
-        <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">(無料見積もりを体験する)</a>
+    <section class="cta container">
+        <h2>創世記を、今。</h2>
+        <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">(Meta-RC 創世記 解析エンジンを起動)</a>
     </section>
 
     <footer style="padding: 60px 20px; border-top: 1px solid #222; text-align: center; color: #444; font-size: 0.8rem;">
-        <p>日本時間 2026.05.13 | Meta-RC Project Management by AGP</p>
+        <p>日本時間 2026.05.13 | Meta-RC プロジェクト管理 by AGP</p>
     </footer>
 
 </body>
