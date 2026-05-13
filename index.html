@@ -3,145 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta-RC | 高度建築・収益解析</title>
+    <title>Meta-RC | 創世記の建築・収益解析</title>
     <style>
         :root {
-            --bg-color: #0A0A0A; /* 深いダークグレー */
+            --bg-color: #000000;
             --accent: #d4af37; /* 誠実なゴールド */
-            --text: #ffffff; /* 白 */
-            --sub: #999999;
-            --card-bg: #161616;
+            --text: #ffffff;
+            --shadow: rgba(212, 175, 55, 0.8);
         }
 
         body, html {
-            margin: 0; padding: 0;
+            margin: 0; padding: 0; height: 100%;
             background-color: var(--bg-color);
             color: var(--text);
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-            line-height: 1.8;
-            scroll-behavior: smooth;
+            font-family: "Hiragino Mincho ProN", "MS PMincho", serif; /* エレガントな明朝体 */
+            overflow-x: hidden;
         }
 
-        /* ヒーローセクション: 背景動画とフェードインテキスト */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; overflow: hidden;
-        }
-
-        .hero-video-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; object-fit: cover; opacity: 0.3; /* 動画の不透明度 */
+        /* 背景動画: 宇宙の星が流れる */
+        .video-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; object-fit: cover; opacity: 0.6;
         }
 
         /* フェードインアニメーション */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
-            animation-delay: 1s; /* 1秒後に開始 */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px;
         }
 
-        /* 見出しのゴールドオーラエフェクト */
-        .hero h1 {
-            font-size: 4rem; font-weight: 700;
-            background: linear-gradient(135deg, #d4af37, #f1e0ac, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            letter-spacing: 0.1em;
+        /* Meta_RC_Pulse ゴールドオーラ */
+        .pulse-title {
+            font-size: 4.5rem; font-weight: bold;
+            color: var(--text);
+            text-shadow: 0 0 15px var(--shadow), 0 0 30px var(--shadow);
             margin-bottom: 20px;
+            animation: fadeInUp 2s ease-out forwards;
         }
 
-        .brand-statement {
-            font-size: 1.5rem; color: var(--accent);
-            letter-spacing: 0.1em; margin-bottom: 40px;
-            font-weight: 300;
+        .main-message {
+            font-size: 1.8rem; line-height: 1.6;
+            margin-bottom: 50px;
+            animation: fadeInUp 2.5s ease-out forwards;
+            animation-delay: 0.5s; opacity: 0;
+            text-shadow: 2px 2px 4px #000; /* 文字を見やすく */
         }
 
-        .container { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        /* 提案内容カード */
+        .proposal-section {
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 3s ease-out forwards;
+            animation-delay: 1s; opacity: 0;
+        }
+
+        .proposal-container { max-width: 900px; margin: 0 auto; }
         
-        /* 提案内容セクション */
-        .proposal { text-align: left; }
-        .proposal h2 { text-align: center; font-size: 2.5rem; font-weight: 200; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 60px; }
-        .proposal-item { background-color: var(--card-bg); padding: 30px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #222; }
-        .proposal-item h3 { color: var(--accent); font-size: 1.6rem; margin-top: 0; margin-bottom: 20px; font-weight: 400; }
-        .proposal-item p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 0; font-family: "Georgia", serif; } /* おしゃれな明朝体 */
+        .proposal-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--accent);
+            padding: 40px; border-radius: 20px; margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-        /* CTA: 洗練されたゴールドボタン */
-        .cta { text-align: center; padding: 100px 20px; }
-        .cta h2 { font-weight: 200; color: #fff; margin-bottom: 40px; }
-        .cta-btn { 
-            display: inline-block; padding: 20px 60px; 
-            border: 1px solid var(--accent); border-radius: 50px; 
-            color: var(--accent); text-decoration: none; 
-            font-size: 1.2rem; font-weight: bold; transition: 0.4s;
-            background: rgba(212,175,55,0.05);
+        .proposal-card h3 {
+            color: var(--accent); font-size: 1.8rem; margin-top: 0;
+            border-bottom: 1px solid var(--accent); display: inline-block; padding-bottom: 5px;
         }
-        .cta-btn:hover { 
-            background: var(--accent); color: #000; 
-            box-shadow: 0 0 30px rgba(212,175,55,0.4); 
+
+        .proposal-card p { font-size: 1.2rem; line-height: 1.8; margin-top: 20px; }
+
+        /* CTAボタン */
+        .cta-btn {
+            display: inline-block; padding: 20px 80px;
+            border: 2px solid var(--accent); border-radius: 50px;
+            color: var(--accent); text-decoration: none;
+            font-size: 1.5rem; font-weight: bold;
+            background: rgba(0,0,0,0.6);
+            transition: 0.4s;
+            box-shadow: 0 0 20px var(--shadow);
         }
+        .cta-btn:hover { background: var(--accent); color: #000; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .brand-statement { font-size: 1.1rem; }
-            .proposal-item { padding: 20px; }
-            .proposal-item p { font-size: 1rem; }
-            .cta-btn { font-size: 1.1rem; padding: 18px 40px; }
+            .pulse-title { font-size: 2.5rem; }
+            .main-message { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-the-night-sky-moving-slowly-36423-large.mp4" type="video/mp4">
+    </video>
+
     <section class="hero">
-        <video autoplay loop muted playsinline poster="http://googleusercontent.com/image_collection/image_retrieval/11193974492254908631" class="hero-video-bg">
-            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <div class="fade-in">
-            <h1>Meta_RC_Pulse</h1>
-            <div class="brand-statement">
-                未開拓な投資<br>
-                or<br>
-                大地震から家族を守る家<br>
-                最先端技術を集約して的確な建築を提案します
+        <h1 class="pulse-title">Meta_RC_Pulse</h1>
+        <div class="main-message">
+            未開拓な投資<br>
+            <span style="font-size: 1.2rem; color: #888;">あるいは</span><br>
+            大地震から家族を守る家<br><br>
+            <span style="font-size: 1.4rem; color: var(--accent);">最先端技術を集約して的確な建築を提案します</span>
+        </div>
+        <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">創世記 解析エンジンを起動</a>
+    </section>
+
+    <section class="proposal-section">
+        <div class="proposal-container">
+            <h2 style="text-align:center; color:var(--accent); font-size:2.5rem; margin-bottom:60px;">提案内容</h2>
+            
+            <div class="proposal-card">
+                <h3>投資家様には</h3>
+                <p>AI による35年間ローン返済、税金、修繕、管理費を差し引いた<br><b>毎月の純利益を確実にお振込</b>いたします。</p>
+            </div>
+
+            <div class="proposal-card">
+                <h3>住居希望様には</h3>
+                <p>大地震によるライフライン崩壊にも耐えうる<br><b>半自給自足可能な耐久性住宅</b>をご提案します。</p>
             </div>
         </div>
     </section>
-
-    <section class="container proposal">
-        <h2>提案内容</h2>
-        
-        <div class="proposal-item">
-            <h3>投資家様には</h3>
-            <p>
-                AI による35年間ローン返済、税金 、修繕 、管理費を差し引いた毎月の純利益を確実にお振込
-            </p>
-        </div>
-        
-        <div class="proposal-item">
-            <h3>住居希望様には</h3>
-            <p>
-                大地震によるライフライン崩壊にも耐うる半自給自足可能な耐久性住宅
-            </p>
-        </div>
-    </section>
-
-    <section class="cta container">
-        <h2>創世記を、今。</h2>
-        <a href="https://be8cw5a4wwszku3cxujf3s.streamlit.app" target="_blank" class="cta-btn">(Meta-RC 創世記 解析エンジンを起動)</a>
-    </section>
-
-    <footer style="padding: 60px 20px; border-top: 1px solid #222; text-align: center; color: #444; font-size: 0.8rem;">
-        <p>日本時間 2026.05.13 | Meta-RC プロジェクト管理 by AGP</p>
-    </footer>
 
 </body>
 </html>
