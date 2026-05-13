@@ -67,15 +67,27 @@
         .premium-img { flex: 1; border-radius: 10px; overflow: hidden; border: 1px solid #333; }
         .premium-img img { width: 100%; display: block; }
 
-        /* CTA */
+        /* CTA: 洗練された角丸（ピル形状）ボタンへの変更箇所 */
         .cta { text-align: center; padding: 100px 20px; }
         .cta-btn { 
-            display: inline-block; padding: 25px 60px; 
-            border: 2px solid var(--accent); color: var(--accent); 
-            text-decoration: none; font-size: 1.3rem; letter-spacing: 0.2em; 
-            font-weight: bold; transition: 0.4s; background: rgba(0,0,0,0.5);
+            display: inline-block; 
+            padding: 20px 60px; 
+            border: 1px solid var(--accent); /* よりスマートな細いライン */
+            border-radius: 50px; /* Instagram風の完全な角丸 */
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            letter-spacing: 0.1em; 
+            font-weight: bold; 
+            transition: 0.4s; 
+            background: rgba(212,175,55,0.05); /* ほんのりゴールドを透過 */
         }
-        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px rgba(212,175,55,0.5); }
+        .cta-btn:hover { 
+            background: var(--accent); 
+            color: #000; 
+            box-shadow: 0 0 25px rgba(212,175,55,0.4); 
+            transform: scale(1.02); /* マウスを乗せると少しだけ浮き上がる効果 */
+        }
 
         /* Tables */
         table { width: 100%; border-collapse: collapse; margin-top: 40px; }
@@ -85,6 +97,7 @@
         @media (max-width: 768px) {
             .pillar-grid, .premium-box { grid-template-columns: 1fr; flex-direction: column; }
             .hero h1 { font-size: 2rem; }
+            .cta-btn { width: 80%; padding: 18px 0; font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -167,7 +180,7 @@
             <tr><td>地下階 (B1)</td><td>天井高 CH 3,000mm / 三面LEDウォール / 完全防音</td></tr>
             <tr><td>Premium管理</td><td>ARグラス常時監査 / 自動工程管理 / AI回答催促システム</td></tr>
             <tr><td>外装・意匠</td><td>接道側オール鏡張り / 鏡面ステン庇 / 鏡面オートロック</td></tr>
-            <li><strong>誠実な適合：</strong> 建築基準法を遵守し、物理的な安心を数値で証明。</li>
+            <tr><td>誠実な適合</td><td>建築基準法を遵守し、物理的な安心を数値で証明。</td></tr>
             <tr><td>災害対策</td><td>RC造ピラミッドシェルター / 自家発電 / 高耐久ポリウレア防水</td></tr>
         </table>
     </section>
@@ -184,7 +197,7 @@
     </section>
 
     <footer>
-        <p>日本時間 2026.05.12 | Meta-RC-Estimator | Developed by Ejipe & AGP</p>
+        <p>日本時間 2026.05.13 | Meta-RC-Estimator | Developed by Ejipe & AGP</p>
     </footer>
 
 </body>
